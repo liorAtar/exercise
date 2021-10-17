@@ -28,8 +28,22 @@ export default class Controller {
 		this.view.updateFilterButtons(route);
 	}
 
-	
 	addItem(title) {
+
+		// Check if the title contains '<' 
+		if(title.indexOf("<") !=-1)
+		{
+			// Updates the title without the '<' char
+			title =  title.replace('<', '');
+		}
+
+		// Check if the title contains '>' 
+		if(title.indexOf(">") !=-1)
+		{
+			// Updates the title without the '>' char
+			title =  title.replace('>', '');
+		}
+
 		this.store.insert({
 			id: Date.now(),
 			title,
