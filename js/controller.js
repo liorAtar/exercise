@@ -52,7 +52,7 @@ export default class Controller {
 			this.view.clearNewTodo();
 			this._filter(true);
 		});
-		
+
 	}
 
 	editItemSave(id, title) {
@@ -111,7 +111,7 @@ export default class Controller {
 		}
 
 		this.store.count((total, active, completed) => {
-			this.view.setItemsLeft(0);
+			this.view.setItemsLeft(active);
 			this.view.setClearCompletedButtonVisibility(completed);
 
 			this.view.setCompleteAllCheckbox(completed === total);
