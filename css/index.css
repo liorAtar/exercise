@@ -145,7 +145,8 @@ body {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	max-height: 300px;
+	max-height:300px;/*The important part*/
+    overflow-y:auto;
 }
 
 .todo-list li {
