@@ -137,7 +137,7 @@ export default class View {
 
   bindEditItemCancel(handler) {
     delegateEvent(this.$todoList, 'li .edit', 'keyup', ({ target, keyCode }) => {
-      if (keyCode === ESCAPE_KEY) {
+      if (keyCode === ENTER_KEY) {
         target.dataset.iscanceled = true;
         target.blur();
 
