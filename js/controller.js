@@ -1,9 +1,9 @@
 import {emptyItemQuery} from './item.js';
-
+			
 export default class Controller {
 
 	constructor(store, view) {
-		this.store = store;
+		this.store = store; 
 		this.view = view;
 
 		view.bindAddItem(this.addItem.bind(this));
