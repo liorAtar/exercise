@@ -4,10 +4,11 @@ export default class Store {
 
 	constructor(name, callback) {
 
-		let liveTodos;
+		let liveTodos;  // list of todos objects
 
 		this.getLocalStorage = () => {
-			return liveTodos || JSON.parse(localStorage.getItem(name) || '[]');
+			// Fetches the todos from the localstorage
+			return liveTodos || JSON.parse(localStorage.getItem(name) || []);
 		};
 
 		this.setLocalStorage = (todos) => {
@@ -54,17 +55,29 @@ export default class Store {
 	}
 
 	insert(item, callback) {
+		
 		const todos = this.getLocalStorage();
-		todos.push(item);
 
-		this.setLocalStorage(todos);
+		// Loop over the todos list and check if there are any existing todo object with the item's title
+		const found = todos.find(element => element.title === item.title);
 
-		if (callback) {
-			callback();
+		// If no object with item's title fouund, the item will be added to the todos and saved in the local storage
+		if(found === undefined){
+			todos.push(item);
+
+			this.setLocalStorage(todos);
+
+			if (callback) {
+				callback();
+			}
+		}
+		else {
+			alert("To-do already exist");
 		}
 	}
 
 	remove(query, callback) {
+		// todo
 		const todos = this.getLocalStorage().filter(todo => {
 			for (let k in query) {
 				if (query[k] === todo[k]) {

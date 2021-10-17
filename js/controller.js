@@ -52,6 +52,7 @@ export default class Controller {
 			this.view.clearNewTodo();
 			this._filter(true);
 		});
+		
 	}
 
 	editItemSave(id, title) {
