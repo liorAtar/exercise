@@ -15,6 +15,6 @@ export default class Template {
   }
 
   itemCounter(activeTodos) {
-    return `${activeTodos} item${activeTodos !== 1 ? 's' : ''} left`;
+    return `${activeTodos} item${activeTodos > 1 ? 's' : ''} left`;
   }
 }
