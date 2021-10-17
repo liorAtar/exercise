@@ -11,7 +11,7 @@
 		<section class="todoapp">
 			<header class="header">
 				<h1>Todos</h1>
-				<input class="new-todo" placeholder="What needs to be done?" autofocus/>
+				<input id="todo-input" onkeyup="saveValue(this)" class="new-todo" placeholder="What needs to be done?" autofocus/>
 			</header>
 
 			<section style="display:none" class="main">
@@ -37,6 +37,21 @@
 			</section>
 		</section>
 
-		<script src="js/app.js" type="module"></script>
+		<script src="js/app.js" type="module">
+			document.getElementById("todo-input").value = getSavedValue("todo-input");
+
+			function saveValue(e){
+				var id = e.id;
+				var val = e.value;
+				localStorage.setItem(id, val);
+			}
+
+			function getSavedValue(v){
+				if(!localStorage.getItem(v)){
+					return "";
+				}
+				return localStorage.getItem(v);
+			}
+		</script>
 	</body>
 </html>
