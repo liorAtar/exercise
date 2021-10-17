@@ -16,6 +16,7 @@ export default class View {
     this.$toggleAll = query('.toggle-all');
     this.$newTodo = query('.new-todo');
 
+    // delegateEvent is a way to add event listener for multiple elements with support fro adding extra children
     delegateEvent(this.$todoList, 'li label', 'dblclick', ({ target }) => {
       this.editItem(target);
     });
